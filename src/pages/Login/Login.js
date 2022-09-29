@@ -3,8 +3,10 @@ import './login.scss';
 import {Formik} from "formik";
 import {connect} from "react-redux";
 import {login} from '../../redux/actions/loginAction';
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+    const navigate = useNavigate();
     return (
         <div className="container">
             <div className="row vh-100 justify-content-center align-items-center">
@@ -16,7 +18,7 @@ const Login = (props) => {
                         <Formik
                             initialValues={{ username: '', password: '' }}
                             onSubmit={(values ) => {
-                                props.login(values);
+                                props.login(values, navigate);
                             }}
                         >
                             {({
