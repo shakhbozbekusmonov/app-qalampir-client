@@ -1,0 +1,27 @@
+/************************** Header Styles **********************/
+.header{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 130px;
+
+  .header-top{
+    ul{
+      li{
+        a{
+          color: #808080;
+          &:hover{
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+  .header-main{
+    .navbar-brand{
+      .logo{
+        width: 240px;
+      }
+    }
+  }
+}
