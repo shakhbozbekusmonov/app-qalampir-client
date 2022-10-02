@@ -3,7 +3,12 @@ import AdminLayout from "../../components/AdminLayout";
 import {Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
 import {Formik} from "formik";
 import {connect} from "react-redux";
-import {getNewsUz, saveNewsUz, updateState} from "../../redux/actions/newsAction";
+import {
+    deleteNewsUz,
+    getNewsUz,
+    saveNewsUz,
+    updateState
+} from "../../redux/actions/newsAction";
 import {FaRegEdit} from "react-icons/fa";
 import {MdDeleteForever} from "react-icons/md";
 
@@ -41,8 +46,8 @@ const AdminNewsUz = (props) => {
                                         <img src={item.image_url} style={{width: "70px"}} alt={item.title}/>
                                     </td>
                                     <td>
-                                        <button type="button" className="btn btn-success"><FaRegEdit/></button>
-                                        <button type="button" className="btn btn-danger ml-2"><MdDeleteForever/></button>
+                                        <button type="button" className="btn btn-success" onClick={() => props.updateState({openUz: true, selectedItemUz: item})}><FaRegEdit/></button>
+                                        <button type="button" className="btn btn-danger ml-2" onClick={() => props.updateState({deleteModalUz: true, selectedIndexUz: item.id})}><MdDeleteForever/></button>
                                     </td>
                                 </tr>
                             )
@@ -109,6 +114,16 @@ const AdminNewsUz = (props) => {
                     )}
                 </Formik>
             </Modal>
+
+            <Modal isOpen={props.deleteModalUz} toggle={() => props.updateState({deleteModalUz: false})}>
+                <ModalHeader>
+                    <div>Rostdan ham o'chirmoqchimisiz?</div>
+                </ModalHeader>
+                <ModalFooter>
+                    <button type="button" className="btn btn-danger" onClick={props.deleteNewsUz}>Ha</button>
+                    <button type="button" className="btn btn-secondary" onClick={() => props.updateState({deleteModalUz: false})}>Yo'q</button>
+                </ModalFooter>
+            </Modal>
         </AdminLayout>
     );
 };
@@ -117,6 +132,9 @@ const mapStateToProps = (state) => {
     return {
         openUz: state.news.openUz,
         newsUz: state.news.newsUz,
+        deleteModalUz: state.news.deleteModalUz,
+        selectedIndexUz: state.news.selectedIndexUz,
+        selectedItemUz: state.news.selectedItemUz,
     }
 }
 
@@ -124,5 +142,6 @@ export default connect(mapStateToProps,
     {
         updateState,
         saveNewsUz,
-        getNewsUz
+        getNewsUz,
+        deleteNewsUz,
     })(AdminNewsUz);
