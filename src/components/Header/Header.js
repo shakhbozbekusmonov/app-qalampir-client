@@ -41,13 +41,19 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className="header-main">
+            <div className="header-main d-flex align-items-center">
                 <div className="navbar-brand">
                     <Link to="/"><img src="/assets/images/logo_n.png" className="logo" alt="Qalampir"/></Link>
                 </div>
 
                 <ul className="nav">
-                    <li className="nav-item"><Link to="">Jamiyat </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Jamiyat </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Olam </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Madaniyat-san'at </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Intervyu </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Foydali </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Sport </Link></li>
+                    <li className="nav-item"><Link to="" className="nav-link">Tahlil </Link></li>
                 </ul>
             </div>
         </header>
