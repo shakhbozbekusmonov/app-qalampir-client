@@ -35,6 +35,7 @@ const Login = (props) => {
                                         placeholder="Username"
                                         onChange={handleChange}
                                         value={values.username}
+                                        required
                                     />
                                     <input
                                         type="password"
@@ -43,11 +44,12 @@ const Login = (props) => {
                                         placeholder="Password"
                                         onChange={handleChange}
                                         value={values.password}
+                                        required   
                                     />
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="btn btn-success btn-block mt-3">Sign-in</button>
+                                        className={`btn btn-success btn-block mt-3 ${isSubmitting ? "hover" : ''}`}>Sign-in</button>
                                 </form>
                             )}
                         </Formik>

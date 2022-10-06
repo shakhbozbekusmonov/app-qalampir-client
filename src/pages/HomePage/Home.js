@@ -1,12 +1,11 @@
 import React from 'react';
 import './home.scss';
-import Header from "../../components/Header/Header";
+import Uz from "../Language/Uz";
 
 const Home = () => {
     return (
         <>
-            <Header/>
-            <h1>Home Page</h1>
+            <Uz/>
         </>
     );
 };
